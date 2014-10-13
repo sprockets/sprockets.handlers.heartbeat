@@ -27,9 +27,16 @@ Example
 This examples demonstrates how to use ``sprockets.handlers.heartbeat`` by ...
 .. code:: python
 
+    from tornado import web
+
     from sprockets import handlers.heartbeat
 
-    # Example here
+    def check_database():
+        # Verify connectivity to our database
+
+    handlers.heartbeat.register_callback(check_database)
+
+    app = web.Application([(r'/heartbeat', handlers.heartbeat.HeartbeatHandler)])
 
 Version History
 ---------------
