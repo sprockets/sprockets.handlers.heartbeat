@@ -29,7 +29,7 @@ if sys.version_info < (3, 0):
 
 setuptools.setup(
     name='sprockets.handlers.heartbeat',
-    version='0.0.0',
+    version='0.1.0',
     description='A callback-based heartbeat handler',
     long_description=codecs.open('README.rst', encoding='utf-8').read(),
     url='https://github.com/sprockets/sprockets.handlers.heartbeat.git',
