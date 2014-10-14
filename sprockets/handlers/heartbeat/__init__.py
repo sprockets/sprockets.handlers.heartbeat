@@ -8,9 +8,10 @@ import logging
 
 from tornado.web import RequestHandler
 
-
 version_info = (0, 1, 0)
 __version__ = '.'.join(str(v) for v in version_info)
+
+LOGGER = logging.getLogger(__name__)
 
 callbacks = []
 
@@ -42,4 +43,4 @@ def register_callback(callable_):
 
     """
     callbacks.append(callable_)
-    logging.info('Callback %s registered', callable_.__name__)
+    LOGGER.info('Callback %s registered', callable_.__name__)

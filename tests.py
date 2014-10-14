@@ -8,14 +8,13 @@ try:
 except ImportError:
     import unittest
 
-from tornado.testing import AsyncHTTPTestCase
-from tornado.web import Application
+from tornado import testing, web
 
 
 from sprockets.handlers import heartbeat
 
 
-class _BaseHeartbeatHandlerTestCase(AsyncHTTPTestCase):
+class _BaseHeartbeatHandlerTestCase(testing.AsyncHTTPTestCase):
 
     def setUp(self):
         super(_BaseHeartbeatHandlerTestCase, self).setUp()
@@ -33,7 +32,7 @@ class _BaseHeartbeatHandlerTestCase(AsyncHTTPTestCase):
         heartbeat.callbacks = []
 
     def get_app(self):
-        return Application([('/heartbeat', heartbeat.HeartbeatHandler)])
+        return web.Application([('/heartbeat', heartbeat.HeartbeatHandler)])
 
 
 class TestHealthyHeartbeat(_BaseHeartbeatHandlerTestCase):
