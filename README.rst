@@ -25,11 +25,20 @@ Requirements
 Example
 -------
 This examples demonstrates how to use ``sprockets.handlers.heartbeat`` by ...
+
 .. code:: python
 
-    from sprockets import handlers.heartbeat
+    from tornado import web
 
-    # Example here
+    from sprockets.handlers import heartbeat
+
+    def check_database():
+        # Verify connectivity to our database
+        return is_database_up()  # Return True/False
+
+    heartbeat.register_callback(check_database)
+
+    app = web.Application([(r'/heartbeat', heartbeat.HeartbeatHandler)])
 
 Version History
 ---------------
