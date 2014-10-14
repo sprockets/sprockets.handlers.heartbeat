@@ -20,25 +20,33 @@ https://sprocketshandlersheartbeat.readthedocs.org
 
 Requirements
 ------------
--  `sprockets <https://github.com/sprockets/sprockets>`_
+-  `tornado <https://github.com/tornadoweb/tornado>`_
 
 Example
 -------
-This examples demonstrates how to use ``sprockets.handlers.heartbeat`` by ...
+This examples demonstrates how to use ``sprockets.handlers.heartbeat`` by
+registering the ``check_database`` method that is invoked each time a request
+to ``/heartbeat`` is made.
 
 .. code:: python
 
+    from sprockets.handlers import heartbeat
     from tornado import web
 
-    from sprockets.handlers import heartbeat
 
     def check_database():
-        # Verify connectivity to our database
-        return is_database_up()  # Return True/False
+        """Any check method should return a bool specifying the check is ok.
 
+        :rtype: bool
+
+        """
+        return True
+
+    # Register the check method
     heartbeat.register_callback(check_database)
 
-    app = web.Application([(r'/heartbeat', heartbeat.HeartbeatHandler)])
+    # Create a Tornado application
+    app = web.Application([('/heartbeat', heartbeat.HeartbeatHandler)])
 
 Version History
 ---------------

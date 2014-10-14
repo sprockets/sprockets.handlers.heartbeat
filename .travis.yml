@@ -23,4 +23,4 @@ deploy:
     tags: true
     all_branches: true
   password:
-    secure: [REPLACE-ME]
+    secure: "iznyfbrIbZXOVWiGjroqExbpA9wFNgy3OEuyhT0r4nyYaLqAsbHxQFop6EqO7zt0laWiE1Cj0tpQSud6rf+Et1zN9j5Xcc0ftpZWuweVFM2zgULiZIWocG4MhwFPf+DuaGhunsrLcPhxA99Jzi/OxlOdgiGDYFviRAqy4V8GsH4="

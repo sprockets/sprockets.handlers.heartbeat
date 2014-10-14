@@ -1,1 +1,1 @@
-sprockets<2
+tornado
