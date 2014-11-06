@@ -8,7 +8,7 @@ import logging
 
 from tornado.web import RequestHandler
 
-version_info = (0, 1, 0)
+version_info = (0, 1, 1)
 __version__ = '.'.join(str(v) for v in version_info)
 
 LOGGER = logging.getLogger(__name__)
@@ -23,7 +23,7 @@ class HeartbeatHandler(RequestHandler):
         """Respond with the health of our service."""
         if not all(callback() for callback in callbacks):
             self.set_status(500)
-            self.write()
+            return
 
         self.set_status(204)
 
